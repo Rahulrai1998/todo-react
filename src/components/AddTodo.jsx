@@ -2,16 +2,20 @@ import React from "react";
 
 const AddTodo = () => {
   return (
-    <div class="container text-center">
-      <div class="row custom-row">
-        <div class="col-5">
-          <input type="text" placeholder="enter todo here" />
+    <div className="container text-center mt-5 mb-3">
+      <div className="row custom-row d-flex justify-content-end">
+        <div className="col-3">
+          <input
+            type="text"
+            placeholder="Enter here..."
+            className="form-control"
+          />
         </div>
-        <div class="col-5">
-          <input type="date" />
+        <div className="col-3">
+          <input type="date" className="form-control" />
         </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-success custom-btn">
+        <div className="col-2">
+          <button type="button" className="btn btn-success custom-btn">
             Add
           </button>
         </div>
