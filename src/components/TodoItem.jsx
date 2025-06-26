@@ -1,4 +1,5 @@
 import React from "react";
+import { MdDelete } from "react-icons/md";
 
 const TodoItem = ({ todoText, date }) => {
   return (
@@ -8,7 +9,7 @@ const TodoItem = ({ todoText, date }) => {
         <div className="col-4 todoText">{date}</div>
         <div className="col-2">
           <button type="button" className="btn btn-danger custom-btn">
-            Delete
+            <MdDelete />
           </button>
         </div>
       </div>
