@@ -3,41 +3,27 @@ import AppName from "./components/AppName";
 import TodoItem from "./components/TodoItem";
 import "./App.css";
 import Clock from "./components/Clock";
+import { useState } from "react";
 
 function App() {
-  const todoData = [
-    {
-      id: 0,
-      text: "Clean car",
-      date: "10 JAN 2001",
-    },
-    {
-      id: 1,
-      text: "Read book",
-      date: "10 JAN 2001",
-    },
-    {
-      id: 3,
-      text: "Go to market",
-      date: "10 JAN 2001",
-    },
-    {
-      id: 4,
-      text: "Buy a house",
-      date: "10 JAN 2001",
-    },
-  ];
+  const [todo, setTodo] = useState([]);
+  const [emptyMsg] = useState("Add Something");
+
+  const handleAddTodo = (todoInput, time) => {
+    setTodo([...todo, todoInput]);
+  };
 
   return (
     <>
-      <center className="todo-container w-50 m-auto">
+      <center className="todo-container  mt-5 m-auto border">
         <AppName />
-        <AddTodo />
+        <AddTodo handleAddTodo={handleAddTodo} />
         <div className="items-container w-100">
-          {todoData?.map((todo) => (
+          {todo?.map((todo) => (
             <TodoItem key={todo?.id} todoText={todo?.text} date={todo?.date} />
           ))}
         </div>
+        {todo.length === 0 && <p className="lead">{emptyMsg}</p>}
       </center>
       {/* <center>
         <Clock />

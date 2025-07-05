@@ -2,6 +2,10 @@ input {
   width: 100%;
 }
 
+.todo-container {
+  width: 60vw;
+}
+
 .todoText {
   text-align: left;
 }
