@@ -9,9 +9,9 @@ function App() {
   const [todo, setTodo] = useState([]);
 
   const handleAddTodo = (todoInput, time) => {
-    setTodo([...todo, todoInput]);
+    setTodo((todo) => [...todo, todoInput]);
   };
-
+  
   const handleDeleteTodo = (text) => {
     const newTodo = todo.filter((item) => item.text != text);
     setTodo(newTodo);
