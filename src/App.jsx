@@ -7,10 +7,14 @@ import { useState } from "react";
 
 function App() {
   const [todo, setTodo] = useState([]);
-  const [emptyMsg] = useState("Add Something");
 
   const handleAddTodo = (todoInput, time) => {
     setTodo([...todo, todoInput]);
+  };
+
+  const handleDeleteTodo = (text) => {
+    const newTodo = todo.filter((item) => item.text != text);
+    setTodo(newTodo);
   };
 
   return (
@@ -20,10 +24,15 @@ function App() {
         <AddTodo handleAddTodo={handleAddTodo} />
         <div className="items-container w-100">
           {todo?.map((todo) => (
-            <TodoItem key={todo?.id} todoText={todo?.text} date={todo?.date} />
+            <TodoItem
+              key={todo?.id}
+              todoText={todo?.text}
+              date={todo?.date}
+              handleDeleteTodo={handleDeleteTodo}
+            />
           ))}
         </div>
-        {todo.length === 0 && <p className="lead">{emptyMsg}</p>}
+        {todo.length === 0 && <p className="lead">Add Something</p>}
       </center>
       {/* <center>
         <Clock />
