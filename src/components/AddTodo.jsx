@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { IoIosAddCircle } from "react-icons/io";
+import { TodoContext } from "../store/TodoStore";
 
-const AddTodo = ({ handleAddTodo }) => {
+const AddTodo = () => {
+  const { handleAddTodo } = useContext(TodoContext);
+
   const textRef = useRef("");
   const dateRef = useRef("");
   // const [todo, setTodo] = useState({ id: 1, text: "", date: "" });
