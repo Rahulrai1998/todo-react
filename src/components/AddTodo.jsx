@@ -22,6 +22,7 @@ const AddTodo = () => {
       text: textRef.current.value,
       date: dateRef.current.value,
     });
+    //useRef doesn't rerender the DOM on every changes
     textRef.current.value = "";
     dateRef.current.value = "";
   };

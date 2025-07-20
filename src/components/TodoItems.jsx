@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { TodoContext } from "../store/TodoStore";
 import TodoItem from "./TodoItem";
 const TodoItems = () => {
-  const { todo, setTodo, handleDeleteTodo } = useContext(TodoContext);
+  const { todo, handleDeleteTodo } = useContext(TodoContext);
 
   return (
     <>
-      {todo?.map((todo) => (
+      {todo?.map((todo,i) => (
         <TodoItem
-          key={todo?.id}
+          key={i}
           todoText={todo?.text}
           date={todo?.date}
           handleDeleteTodo={handleDeleteTodo}

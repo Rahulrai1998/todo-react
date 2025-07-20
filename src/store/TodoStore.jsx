@@ -1,26 +1,47 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 
 export const TodoContext = createContext();
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "DELETE":
+      return state.filter((item) => item.text != action.payload.text);
+      break;
+    case "ADD":
+      return [...state, action.payload.todoInput];
+      break;
+    default:
+      return state;
+  }
+};
+
 const TodoProvider = ({ children }) => {
-  const [todo, setTodo] = useState([]);
+  // const [todo, setTodo] = useState([]);
+  const [todo, dispatch] = useReducer(reducer, []);
 
   const handleDeleteTodo = (text) => {
-    const newTodo = todo.filter((item) => item.text != text);
-    setTodo(newTodo);
+    dispatch({
+      type: "DELETE",
+      payload: {
+        text,
+      },
+    });
   };
 
   const handleAddTodo = (todoInput, time) => {
     //functional updates
-    setTodo((todo) => [...todo, todoInput]);
+    dispatch({
+      type: "ADD",
+      payload: {
+        todoInput,
+      },
+    });
   };
 
   return (
-    <TodoContext.Provider
-      value={{ todo, setTodo, handleDeleteTodo, handleAddTodo }}
-    >
+    <TodoContext value={{ todo, handleDeleteTodo, handleAddTodo }}>
       {children}
-    </TodoContext.Provider>
+    </TodoContext>
   );
 };
 
