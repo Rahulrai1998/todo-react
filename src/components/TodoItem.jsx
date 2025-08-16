@@ -2,6 +2,7 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 
 const TodoItem = ({ todoText, date, handleDeleteTodo }) => {
+  if (!todoText) throw new Error("Text required");
   return (
     <div className="container">
       <div className="row custom-row">
