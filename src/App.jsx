@@ -6,14 +6,17 @@ import Clock from "./components/Clock";
 import { useState } from "react";
 import TodoProvider from "./store/TodoStore";
 import TodoItems from "./components/TodoItems";
-import Modal from "./components/Modal";
+
 import ErrorBoundary from "./components/ErrorBoundary";
+import Debounce from "./components/Debounce";
 
 function App() {
   const [open, setOpen] = useState(false);
   return (
+    // <Debounce />
     <center className="todo-container  mt-5 m-auto border">
-      <TodoProvider>
+      <Clock />
+      {/* <TodoProvider>
         <AppName />
 
         <button onClick={() => setOpen(true)}>Click me</button>
@@ -25,11 +28,7 @@ function App() {
             <TodoItems />
           </ErrorBoundary>
         </div>
-      </TodoProvider>
-      <Modal isOpen={open}>
-        <h1>This is a modal</h1>
-        <button onClick={() => setOpen(false)}>Close</button>
-      </Modal>
+      </TodoProvider> */}
     </center>
   );
 }
